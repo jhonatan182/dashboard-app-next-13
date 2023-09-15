@@ -1,6 +1,6 @@
+import { PokemonsResponse, SimplePokemons } from '@/pokemons';
+import PokemonGrid from '@/pokemons/components/PokemonGrid';
 import type { Metadata } from 'next';
-import { PokemonsResponse, SimplePokemons } from '@/app/pokemons';
-import Pokemon from '@/app/components/Pokemon';
 
 export const metadata: Metadata = {
     title: 'Pokemons Page',
@@ -23,18 +23,20 @@ const getPokemons = async (
         name: pokemon.name,
     }));
 
+    // throw new Error('algo fallo papito');
+
     return pokemons;
 };
 export default async function PokemosPage() {
     const pokemons = await getPokemons(151);
 
     return (
-        <div className="flex flex-col">
-            <div className="flex flex-wrap gap-10 items-center justify-center">
-                {pokemons.map((pokemon) => (
-                    <Pokemon {...pokemon} key={pokemon.id} />
-                ))}
-            </div>
+        <div className="flex flex-col p-2">
+            <span className="text-5xl my-2">
+                Listado de pokemons <small>Estatico</small>
+            </span>
+
+            <PokemonGrid pokemons={pokemons} />
         </div>
     );
 }

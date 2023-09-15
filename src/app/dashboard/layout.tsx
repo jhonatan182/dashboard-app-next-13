@@ -1,5 +1,10 @@
-import Sidebar from '@/app/components/Sidebar';
+import Sidebar from '@/components/Sidebar';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: 'Dashboard general de mi app',
+    description: 'Aqui encontraras menu de mi dashboard',
+};
 interface Props {
     children: React.ReactNode;
 }
@@ -10,7 +15,7 @@ const CounterLayout = ({ children }: Props) => {
             <div className="flex">
                 <Sidebar />
 
-                <div className="p-2 w-full text-slate-900 ">{children}</div>
+                <div className="w-full text-slate-900 ">{children}</div>
             </div>
         </div>
     );
